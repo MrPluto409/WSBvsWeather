@@ -1,17 +1,16 @@
 import random
 from get_all_tickers import get_tickers
 
-allTickers = get_tickers(NYSE=True, NASDAQ = True, AMEX=False)
+def generateTickers():
+    allTickers = get_tickers(NYSE=True, NASDAQ = True, AMEX=False)
+    tickerNumbers = []
+    tickers =[]
 
-length = len(allTickers)
+    while len(tickerNumbers) < 50:
+        randomInt = random.randint(0,len(allTickers)-1)
+        if(randomInt not in tickerNumbers):
+            tickerNumbers.append(randomInt)
 
-tickerNumbers = []
-tickers =[]
-
-while len(tickerNumbers) < 50:
-    randomInt = random.randint(0,len(allTickers)-1)
-    if(randomInt not in tickerNumbers):
-        tickerNumbers.append(randomInt)
-
-for i in tickerNumbers:
-    tickers.append(allTickers(i))
+    for i in tickerNumbers:
+        tickers.append(allTickers(i))
+    return tickers
